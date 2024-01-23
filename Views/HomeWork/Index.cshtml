@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+<div class="card"></div>
+
+@section Scripts{
+    <script src="~/js/travel.js"></script>
+    <script>
+        const card = document.querySelector(".card");
+
+        spots.CommonFormat.Section.forEach((data, index) => {
+            const card = document.createElement("div");
+            card.classList.add("card", `card${index}`);
+            card.style.width = "18rem";
+
+            let imagesHTML = "";
+            data.file.img.forEach((imgData) => {
+                imagesHTML += `<img class="card-img-top" src="${imgData.text}" alt="Card image cap">`;
+            });
+
+            card.innerHTML = `
+                ${imagesHTML}
+                <div class="card-body">
+                    <h5 class="card-title">${data.stitle}</h5>
+                    <p class="card-text">${data.xbody}</p>
+                </div>
+            `;
+
+            card.appendChild(card);
+        });
+    </script>
+}

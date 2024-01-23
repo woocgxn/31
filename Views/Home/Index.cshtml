@@ -1,0 +1,107 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+    <ul class="empList" id="empList"></ul>
+</div>
+
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+
+        // $(document).ready(function () {
+        // alert("Hello!");
+        // });
+
+        // const promise = new Promise((resolve, reject) => {
+        // const num = Math.random > 0.5 ? 1 : 0;
+
+        // if (num) {
+        // resolve(">0.5");
+        // } else {
+        // reject("<=0.5");
+        // }
+        // });
+
+        // promise
+        // .then(result => {
+        // alert(result);
+        // })
+        // .catch(error => {
+        // alert(error);
+        // })
+        // .finally(() => {
+        // console.log("done");
+        // });
+
+
+        //     //建立Promise
+        //     function show(date) {
+        //         const promise = new Promise((resolve, reject) => {
+        //             setTimeout(() => { resolve(data) }, 1000);
+        //         });
+        //         return promise;
+        //     }
+        // //使用Promise
+
+        // printSomething('A')
+        //     .then(data => {
+        //         console.log(data);
+        //         return printSomething('B');
+        //     })
+        //     .then(data => {
+        //         console.log(data);
+        //         return printSomething('C');
+        //     })
+        //     .then(data => {
+        //         console.log(data);
+        //     })
+        //     .finally(() => {
+        //         console.log("END")
+        //     })
+
+        //async await => 用同步的程式語法結構來完成非同步的效果
+        //IIFE
+        // (async () => {
+        //     let data = await show('A');
+        //     console.log(data);
+        //     data = await show('B');
+        //     console.log(data);
+        //     data = await show('C');
+        //     console.log(data);
+        // })();
+
+
+        const emps = [
+            { "name": "Tom", "workYears": 3, "salary": 35000 },
+            { "name": "Jack", "workYears": 5, "salary": 40000 },
+            { "name": "Mary", "workYears": 7, "salary": 45000 }];
+
+        //將資料轉換成HTML清單
+        // const empList = document.getElementById("empList");
+        // emps.forEach(emp => {
+        //     const { name, workYears, salary } = emp;
+        //     const li = document.createElement("li");
+        //     li.innerHTML = `${name} - ${workYears} - ${salary}`;
+        //     empList.appendChild(li);
+        // });
+
+        const htmlEmps = emps.map(emp => {
+            const { name, workYears, salary } = emp;
+            `<li>${name} - ${workYears} - ${salary}</li>`
+        }).join("");
+        // console.log(htmlEmps)
+        ;
+
+        const theList = document.querySelector("#empList");
+        theList.innerHTML = htmlEmps;
+
+
+    </script>
+}
+
